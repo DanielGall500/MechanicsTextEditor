@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/new/Images">
+        <file>Images/ButtonTestNormal.png</file>
+        <file>Images/ButtonTestClicked2.png</file>
+        <file>Images/ButtonTestClicked.png</file>
+    </qresource>
+</RCC>
