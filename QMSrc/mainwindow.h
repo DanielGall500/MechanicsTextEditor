@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QFont>
+#include <QScrollArea>
 
 namespace Ui {
 class MainWindow;
@@ -18,6 +19,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QScrollArea *symbolScrollArea;
 };
 
 #endif // MAINWINDOW_H
