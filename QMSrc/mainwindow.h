@@ -4,6 +4,10 @@
 #include <QMainWindow>
 #include <QFont>
 #include <QScrollArea>
+#include <QPushButton>
+#include <QStringList>
+
+#include <scientificnotationselection.h>
 
 namespace Ui {
 class MainWindow;
@@ -19,7 +23,10 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
     QScrollArea *symbolScrollArea;
+    QPushButton *symbolButton;
+    QStringList *symbolList;
 };
 
 #endif // MAINWINDOW_H

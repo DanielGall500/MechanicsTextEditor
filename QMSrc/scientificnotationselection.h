@@ -19,12 +19,12 @@ public:
     ~ScientificNotationSelection();
 
 private:
-    SymbolType *symbolType;
-    QScrollArea *symbolScrollArea;
+    SymbolType symbolType;
+    QScrollArea symbolScrollArea;
 
-    QStringList *capitalGreekList;
+    QStringList capitalGreekList;
 
-    QStringList generateSelection(SymbolType type);
+    QStringList generateSelectionList();
 
 
 signals:

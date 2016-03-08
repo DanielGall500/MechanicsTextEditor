@@ -2,7 +2,9 @@
 
 ScientificNotationSelection::ScientificNotationSelection(QObject *parent, SymbolType type) : QObject(parent)
 {
-    symbolType = &type;
+    symbolType = type;
+
+    capitalGreekList = (QStringList() << "Γ" << "Δ" << "Λ" << "Ξ" << "Π" << "Σ" << "Φ" << "Ψ" << "Ω");
 }
 
 ScientificNotationSelection::~ScientificNotationSelection()
@@ -10,8 +12,10 @@ ScientificNotationSelection::~ScientificNotationSelection()
 
 }
 
-QStringList ScientificNotationSelection::generateSelection(SymbolType type)
-{
 
+QStringList ScientificNotationSelection::generateSelectionList()
+{
+    if(symbolType == CapitalGreek)
+        return capitalGreekList;
 }
 

@@ -17,7 +17,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->tabWidget->addTab(symbolScrollArea, "Symbols");
 
+    ScientificNotationSelection capitalGreekSelection(ui->tabWidget, CapitalGreek);
 
+    for (unsigned int i = 0; i <= symbolList->length(); i++)
+    {
+
+    }
 }
 
 MainWindow::~MainWindow()

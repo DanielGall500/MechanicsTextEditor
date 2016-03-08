@@ -5,3 +5,4 @@ build-QMSrc-Desktop_Qt_5_4_0_MinGW_32bit-Debug/ui_mainwindow.h
 build-QMSrc-Desktop_Qt_5_4_0_MinGW_32bit-Debug/Makefile.Release
 build-QMSrc-Desktop_Qt_5_4_0_MinGW_32bit-Debug/debug/qrc_resources.cpp
 build-QMSrc-Desktop_Qt_5_4_0_MinGW_32bit-Debug/Makefile
+build-QMSrc-Desktop_Qt_5_4_0_MinGW_32bit-Debug/debug/moc_scientificnotationselection.cpp
