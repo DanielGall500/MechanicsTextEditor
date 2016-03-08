@@ -13,9 +13,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    scientificnotationselection.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    scientificnotationselection.h
 
 FORMS    += mainwindow.ui
 

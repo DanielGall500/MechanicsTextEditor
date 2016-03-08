@@ -17,9 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->tabWidget->addTab(symbolScrollArea, "Symbols");
 
-    ui->tabWidget->widget(0)
-                 ->resize(QSize(symbolScrollArea->width(),
-                                symbolScrollArea->height() / 2));
+
 }
 
 MainWindow::~MainWindow()
