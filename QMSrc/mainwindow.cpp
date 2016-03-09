@@ -17,12 +17,15 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->tabWidget->addTab(symbolScrollArea, "Symbols");
 
-    ScientificNotationSelection capitalGreekSelection(ui->tabWidget, CapitalGreek);
+    symbolSelection = new ScientificNotationSelection(this);
 
-    for (unsigned int i = 0; i <= symbolList->length(); i++)
-    {
+    QStringList capitalGreekList = symbolSelection->generateSelectionList(CapitalGreek);
 
-    }
+    QVBoxLayout *symbolLayout = new QVBoxLayout;
+    symbolScrollArea->setLayout(symbolLayout);
+
+    symbolSelection->generateWidgets(capitalGreekList, symbolScrollArea);
+
 }
 
 MainWindow::~MainWindow()

@@ -6,6 +6,8 @@
 #include <QScrollArea>
 #include <QPushButton>
 #include <QStringList>
+#include <QVBoxLayout>
+#include <QVector>
 
 #include <scientificnotationselection.h>
 
@@ -24,6 +26,7 @@ public:
 private:
     Ui::MainWindow *ui;
 
+    ScientificNotationSelection *symbolSelection;
     QScrollArea *symbolScrollArea;
     QPushButton *symbolButton;
     QStringList *symbolList;
