@@ -17,11 +17,20 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tabWidget->addTab(symbolScrollArea, "Symbols");
 
     symbolSelection = new ScientificNotationSelection(this);
+
     QStringList capitalGreekList = symbolSelection->generateSelectionList(CapitalGreek);
     capitalGreekButtons = symbolSelection->generateWidgets(capitalGreekList, symbolScrollArea);
 
     QVBoxLayout *symbolLayout = new QVBoxLayout;
     symbolScrollArea->setLayout(symbolLayout);
+
+    foreach(symbolButton, capitalGreekButtons)
+    {
+        symbolButton->setMaximumSize
+                (QSize(symbolScrollArea->width() / 5, symbolScrollArea->height() / 20));
+
+        symbolScrollArea->layout()->addWidget(symbolButton);
+    }
 }
 
 MainWindow::~MainWindow()
