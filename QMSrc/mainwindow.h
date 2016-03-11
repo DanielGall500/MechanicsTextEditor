@@ -8,6 +8,9 @@
 #include <QStringList>
 #include <QVBoxLayout>
 #include <QVector>
+#include <QButtonGroup>
+#include <QGroupBox>
+#include <QGridLayout>
 
 #include <scientificnotationselection.h>
 
