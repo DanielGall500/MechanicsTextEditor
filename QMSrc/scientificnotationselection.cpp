@@ -26,6 +26,12 @@ QVector<QPushButton *> ScientificNotationSelection::generateWidgets(QStringList 
     foreach(QString symbol, symbols)
     {
         QPushButton *symbolButton = new QPushButton(symbol, parent);
+
+        QFont buttonFont = symbolButton->font();
+        buttonFont.setPointSize(22);
+        buttonFont.setBold(false);
+        symbolButton->setFont(buttonFont);
+
         notationWidgetCollection->append(symbolButton);
     }
     return *notationWidgetCollection;

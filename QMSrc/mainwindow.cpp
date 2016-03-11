@@ -25,7 +25,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QGridLayout *symbolLayout = new QGridLayout;
     symbolScrollArea->setLayout(symbolLayout);
 
-
     int row = 0, column = 0;
 
     foreach(symbolButton, capitalGreekButtons)
@@ -38,8 +37,7 @@ MainWindow::MainWindow(QWidget *parent) :
         else
             column++;
 
-        symbolButton->setMaximumSize
-                (QSize(symbolScrollArea->width() / 5, symbolScrollArea->height() / 20));
+        symbolButton->setMinimumHeight(symbolScrollArea->height() / 8);
 
         symbolLayout->addWidget(symbolButton, row, column);
     }
