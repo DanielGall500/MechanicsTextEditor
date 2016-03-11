@@ -30,6 +30,8 @@ private:
     QScrollArea *symbolScrollArea;
     QPushButton *symbolButton;
     QStringList *symbolList;
+
+    QVector<QPushButton*>  capitalGreekButtons;
 };
 
 #endif // MAINWINDOW_H

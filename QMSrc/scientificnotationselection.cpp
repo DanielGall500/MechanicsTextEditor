@@ -21,16 +21,13 @@ QStringList ScientificNotationSelection::generateSelectionList(SymbolType type)
         return capitalGreekList;
 }
 
-void ScientificNotationSelection::generateWidgets(QStringList &symbols, QScrollArea *parent)
+QVector<QPushButton *> ScientificNotationSelection::generateWidgets(QStringList &symbols, QScrollArea *parent)
 {
-    for (unsigned int i = 0; i <= symbols.length(); i++)
+    foreach(QString symbol, symbols)
     {
-        symbolButton = new QPushButton(symbols[i]);
-
-        symbolButton->setMaximumWidth(parent->width() / 10);
-        symbolButton->setMaximumHeight(parent->height() / 20);
-
+        QPushButton *symbolButton = new QPushButton(symbol, parent);
         notationWidgetCollection->append(symbolButton);
     }
+    return *notationWidgetCollection;
 }
 

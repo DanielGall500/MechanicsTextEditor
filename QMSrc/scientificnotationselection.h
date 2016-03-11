@@ -7,6 +7,8 @@
 #include <QStringList>
 #include <QVector>
 #include <QPoint>
+#include <cstdlib>
+#include <QSharedPointer>
 
 enum SymbolType {
     LowerCaseGreek,
@@ -20,11 +22,9 @@ public:
     explicit ScientificNotationSelection(QObject *parent = 0);
     ~ScientificNotationSelection();
 
-    void generateWidgets(QStringList &symbols, QScrollArea *parent = 0);
+    QVector<QPushButton *> generateWidgets(QStringList &symbols, QScrollArea *parent = 0);
 
     QStringList generateSelectionList(SymbolType type = CapitalGreek);
-
-    QVector<QPushButton*> *notationWidgetCollection;
 
 
 private:
@@ -32,8 +32,9 @@ private:
     QScrollArea symbolScrollArea;
     QStringList capitalGreekList;
 
-    QPushButton *symbolButton;
+protected:
 
+    QVector<QPushButton*> *notationWidgetCollection;
 
 signals:
 

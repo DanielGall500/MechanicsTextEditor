@@ -14,18 +14,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->tabWidget->removeTab(0);
     ui->tabWidget->removeTab(0);
-
     ui->tabWidget->addTab(symbolScrollArea, "Symbols");
 
     symbolSelection = new ScientificNotationSelection(this);
-
     QStringList capitalGreekList = symbolSelection->generateSelectionList(CapitalGreek);
+    capitalGreekButtons = symbolSelection->generateWidgets(capitalGreekList, symbolScrollArea);
 
     QVBoxLayout *symbolLayout = new QVBoxLayout;
     symbolScrollArea->setLayout(symbolLayout);
-
-    symbolSelection->generateWidgets(capitalGreekList, symbolScrollArea);
-
 }
 
 MainWindow::~MainWindow()
