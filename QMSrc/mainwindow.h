@@ -11,6 +11,7 @@
 #include <QButtonGroup>
 #include <QGroupBox>
 #include <QGridLayout>
+#include <QMessageBox>
 
 #include <scientificnotationselection.h>
 
@@ -35,6 +36,9 @@ private:
     QStringList *symbolList;
 
     QVector<QPushButton*>  capitalGreekButtons;
+
+public slots:
+    void onNotationClicked();
 };
 
 #endif // MAINWINDOW_H

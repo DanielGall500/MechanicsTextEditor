@@ -37,3 +37,5 @@ QVector<QPushButton *> ScientificNotationSelection::generateWidgets(QStringList 
     return *notationWidgetCollection;
 }
 
+
+

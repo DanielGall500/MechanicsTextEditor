@@ -9,6 +9,7 @@
 #include <QPoint>
 #include <cstdlib>
 #include <QSharedPointer>
+#include <QTextEdit>
 
 enum SymbolType {
     LowerCaseGreek,
@@ -35,8 +36,6 @@ private:
 protected:
 
     QVector<QPushButton*> *notationWidgetCollection;
-
-signals:
 
 public slots:
 };

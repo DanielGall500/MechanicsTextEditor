@@ -40,11 +40,19 @@ MainWindow::MainWindow(QWidget *parent) :
         symbolButton->setMinimumHeight(symbolScrollArea->height() / 8);
 
         symbolLayout->addWidget(symbolButton, row, column);
+
+        connect(symbolButton, SIGNAL(clicked()), this, SLOT(onNotationClicked()));
     }
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::onNotationClicked()
+{
+   QString text = ((QPushButton*)sender())->text();
+   ui->mainTextEdit->insertPlainText(text);
 }
 
