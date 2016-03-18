@@ -10,6 +10,7 @@
 #include <cstdlib>
 #include <QSharedPointer>
 #include <QTextEdit>
+#include <iostream>
 
 enum SymbolType {
     LowerCaseGreek,
@@ -25,13 +26,17 @@ public:
 
     QVector<QPushButton *> generateWidgets(QStringList &symbols, QScrollArea *parent = 0);
 
-    QStringList generateSelectionList(SymbolType type = CapitalGreek);
+    QStringList getCapitalGreekList() { return capitalGreekList; }
+    QStringList getBasicMathematicalList() { return mathematicalList; }
 
 
 private:
     SymbolType  symbolType;
     QScrollArea symbolScrollArea;
+
+    //lists
     QStringList capitalGreekList;
+    QStringList mathematicalList;
 
 protected:
 

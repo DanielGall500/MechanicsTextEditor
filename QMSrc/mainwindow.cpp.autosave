@@ -29,8 +29,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     row = 0, column = 0;
 
-    addButtons(mathematicalButtons, symbolScrollArea, symbolLayout);
     addButtons(capitalGreekButtons, symbolScrollArea, symbolLayout);
+    addButtons(mathematicalButtons, symbolScrollArea, symbolLayout);
 
 }
 

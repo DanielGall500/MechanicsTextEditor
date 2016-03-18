@@ -12,6 +12,8 @@
 #include <QGroupBox>
 #include <QGridLayout>
 #include <QMessageBox>
+#include <iostream>
+#include <QDebug>
 
 #include <scientificnotationselection.h>
 
@@ -29,13 +31,16 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    uint row, column;
 
     ScientificNotationSelection *symbolSelection;
     QScrollArea *symbolScrollArea;
     QPushButton *symbolButton;
     QStringList *symbolList;
 
-    QVector<QPushButton*>  capitalGreekButtons;
+    QVector<QPushButton*>  capitalGreekButtons, mathematicalButtons;
+
+    void addButtons(QVector<QPushButton *> &buttonList, QScrollArea *buttonArea, QGridLayout *layout);
 
 public slots:
     void onNotationClicked();
