@@ -54,5 +54,6 @@ void MainWindow::onNotationClicked()
 {
    QString text = ((QPushButton*)sender())->text();
    ui->mainTextEdit->insertPlainText(text);
+   ui->mainTextEdit->setFocus();
 }
 
