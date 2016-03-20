@@ -15,6 +15,8 @@ ScientificNotationSelection::~ScientificNotationSelection()
 
 QVector<QPushButton *> ScientificNotationSelection::generateWidgets(QStringList &symbols, QScrollArea *parent)
 {
+    notationWidgetCollection->clear();
+
     foreach(QString symbol, symbols)
     {
         QPushButton *symbolButton = new QPushButton(symbol, parent);

@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -16,21 +17,21 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tabWidget->removeTab(0);
     ui->tabWidget->addTab(symbolScrollArea, "Symbols");
 
-    QGridLayout *symbolLayout = new QGridLayout;
+    symbolLayout = new QGridLayout;
     symbolScrollArea->setLayout(symbolLayout);
 
     symbolSelection = new ScientificNotationSelection(this);
 
-    QStringList capitalGreekList = symbolSelection->getCapitalGreekList();
-    capitalGreekButtons = symbolSelection->generateWidgets(capitalGreekList, symbolScrollArea);
-
     QStringList mathematicalList = symbolSelection->getBasicMathematicalList();
+    QStringList capitalGreekList = symbolSelection->getCapitalGreekList();
+
     mathematicalButtons = symbolSelection->generateWidgets(mathematicalList, symbolScrollArea);
+    capitalGreekButtons = symbolSelection->generateWidgets(capitalGreekList, symbolScrollArea);
 
     row = 0, column = 0;
 
-    addButtons(mathematicalButtons, symbolScrollArea, symbolLayout);
-    addButtons(capitalGreekButtons, symbolScrollArea, symbolLayout);
+    addButtons(capitalGreekButtons);
+    addButtons(mathematicalButtons);
 
 }
 
@@ -47,21 +48,22 @@ void MainWindow::onNotationClicked()
    ui->mainTextEdit->setFocus();
 }
 
-void MainWindow::addButtons(QVector<QPushButton *> &buttonList, QScrollArea *buttonArea, QGridLayout *layout)
+void MainWindow::addButtons(QVector<QPushButton *> buttonList)
 {
     foreach(symbolButton, buttonList)
     {
         if(column == 5)
         {
-            column = 0; row++;
+            column = 0;
+            row++;
         }
         else
             column++;
 
-        symbolButton->setMinimumHeight(buttonArea->height() / 8);
+        symbolButton->setMinimumHeight(symbolScrollArea->height() / 8);
 
         qDebug() << "Adding " << symbolButton << " to: row " << row << ", column " << column;
-        layout->addWidget(symbolButton, row, column);
+        symbolLayout->addWidget(symbolButton, row, column);
 
         connect(symbolButton, SIGNAL(clicked()), this, SLOT(onNotationClicked()));
     }

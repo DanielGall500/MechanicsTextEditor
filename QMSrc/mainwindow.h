@@ -37,10 +37,11 @@ private:
     QScrollArea *symbolScrollArea;
     QPushButton *symbolButton;
     QStringList *symbolList;
+    QGridLayout *symbolLayout;
 
     QVector<QPushButton*>  capitalGreekButtons, mathematicalButtons;
 
-    void addButtons(QVector<QPushButton *> &buttonList, QScrollArea *buttonArea, QGridLayout *layout);
+    void addButtons(QVector<QPushButton *> buttonList);
 
 public slots:
     void onNotationClicked();
