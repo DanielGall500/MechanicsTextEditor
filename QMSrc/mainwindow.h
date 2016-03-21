@@ -31,7 +31,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    uint row, column;
+    int row, column;
+    uint iter;
 
     ScientificNotationSelection *symbolSelection;
     QScrollArea *symbolScrollArea;
@@ -39,7 +40,7 @@ private:
     QStringList *symbolList;
     QGridLayout *symbolLayout;
 
-    QVector<QPushButton*>  capitalGreekButtons, mathematicalButtons;
+    QVector<QPushButton*>  capitalGreekButtons, mathematicalButtons, lowerGreekButtons;
 
     void addButtons(QVector<QPushButton *> buttonList);
 

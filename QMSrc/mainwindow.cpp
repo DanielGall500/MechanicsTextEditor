@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -26,15 +25,18 @@ MainWindow::MainWindow(QWidget *parent) :
     QStringList capitalGreekList = symbolSelection->getCapitalGreekList();
     QStringList lowerGreekList = symbolSelection->getLowerGreekList();
 
-    mathematicalButtons = symbolSelection->generateWidgets(mathematicalList, symbolScrollArea);
-    capitalGreekButtons = symbolSelection->generateWidgets(capitalGreekList, symbolScrollArea);
     lowerGreekButtons = symbolSelection->generateWidgets(lowerGreekList, symbolScrollArea);
+    capitalGreekButtons = symbolSelection->generateWidgets(capitalGreekList, symbolScrollArea);
+    mathematicalButtons = symbolSelection->generateWidgets(mathematicalList, symbolScrollArea);
 
-    row = 0, column = 0;
 
+
+    row = 0, column = -1;
+
+    addButtons(lowerGreekButtons);
     addButtons(capitalGreekButtons);
     addButtons(mathematicalButtons);
-    addButtons(lowerGreekButtons);
+
 
 }
 
@@ -53,6 +55,7 @@ void MainWindow::onNotationClicked()
 
 void MainWindow::addButtons(QVector<QPushButton *> buttonList)
 {
+    iter = 0;
     foreach(symbolButton, buttonList)
     {
         if(column == 5)
@@ -69,6 +72,13 @@ void MainWindow::addButtons(QVector<QPushButton *> buttonList)
         symbolLayout->addWidget(symbolButton, row, column);
 
         connect(symbolButton, SIGNAL(clicked()), this, SLOT(onNotationClicked()));
+
+        iter++;
+        if(iter == uint(buttonList.length()))
+        {
+            row++;
+            column = -1;
+        }
     }
 }
 
