@@ -29,13 +29,11 @@ MainWindow::MainWindow(QWidget *parent) :
     capitalGreekButtons = symbolSelection->generateWidgets(capitalGreekList, symbolScrollArea);
     mathematicalButtons = symbolSelection->generateWidgets(mathematicalList, symbolScrollArea);
 
-
-
     row = 0, column = -1;
 
-    addButtons(lowerGreekButtons);
-    addButtons(capitalGreekButtons);
-    addButtons(mathematicalButtons);
+    addButtons(lowerGreekButtons, "Lowercase Greek");
+    addButtons(capitalGreekButtons, "Capital Greek");
+    addButtons(mathematicalButtons, "Mathematics");
 
 
 }
@@ -53,9 +51,18 @@ void MainWindow::onNotationClicked()
    ui->mainTextEdit->setFocus();
 }
 
-void MainWindow::addButtons(QVector<QPushButton *> buttonList)
+void MainWindow::addButtons(QVector<QPushButton *> buttonList, QString labelText)
 {
     iter = 0;
+    row++, column = 0;
+
+    symbolLabel = new QLabel(this);
+    QString HTMLtext = "<b>" + labelText + "</b>";
+    symbolLabel->setText(HTMLtext);
+    symbolLayout->addWidget(symbolLabel, row, column);
+
+    row++, column = -1;
+
     foreach(symbolButton, buttonList)
     {
         if(column == 5)
@@ -66,7 +73,7 @@ void MainWindow::addButtons(QVector<QPushButton *> buttonList)
         else
             column++;
 
-        symbolButton->setMinimumHeight(symbolScrollArea->height() / 8);
+        symbolButton->setMinimumHeight(symbolScrollArea->height() / 5);
 
         qDebug() << "Adding " << symbolButton << " to: row " << row << ", column " << column;
         symbolLayout->addWidget(symbolButton, row, column);

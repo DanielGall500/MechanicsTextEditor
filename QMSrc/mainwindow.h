@@ -14,6 +14,7 @@
 #include <QMessageBox>
 #include <iostream>
 #include <QDebug>
+#include <QLabel>
 
 #include <scientificnotationselection.h>
 
@@ -39,10 +40,11 @@ private:
     QPushButton *symbolButton;
     QStringList *symbolList;
     QGridLayout *symbolLayout;
+    QLabel *symbolLabel;
 
     QVector<QPushButton*>  capitalGreekButtons, mathematicalButtons, lowerGreekButtons;
 
-    void addButtons(QVector<QPushButton *> buttonList);
+    void addButtons(QVector<QPushButton *> buttonList, QString labelText);
 
 public slots:
     void onNotationClicked();
