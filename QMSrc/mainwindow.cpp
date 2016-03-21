@@ -24,14 +24,17 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QStringList mathematicalList = symbolSelection->getBasicMathematicalList();
     QStringList capitalGreekList = symbolSelection->getCapitalGreekList();
+    QStringList lowerGreekList = symbolSelection->getLowerGreekList();
 
     mathematicalButtons = symbolSelection->generateWidgets(mathematicalList, symbolScrollArea);
     capitalGreekButtons = symbolSelection->generateWidgets(capitalGreekList, symbolScrollArea);
+    lowerGreekButtons = symbolSelection->generateWidgets(lowerGreekList, symbolScrollArea);
 
     row = 0, column = 0;
 
     addButtons(capitalGreekButtons);
     addButtons(mathematicalButtons);
+    addButtons(lowerGreekButtons);
 
 }
 

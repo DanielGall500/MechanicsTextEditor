@@ -28,7 +28,7 @@ public:
 
     QStringList getCapitalGreekList() { return capitalGreekList; }
     QStringList getBasicMathematicalList() { return mathematicalList; }
-
+    QStringList getLowerGreekList() { return lowercaseGreekList; }
 
 private:
     SymbolType  symbolType;
@@ -36,6 +36,7 @@ private:
 
     //lists
     QStringList capitalGreekList;
+    QStringList lowercaseGreekList;
     QStringList mathematicalList;
 
 protected:

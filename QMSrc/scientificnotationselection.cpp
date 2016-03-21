@@ -3,6 +3,10 @@
 ScientificNotationSelection::ScientificNotationSelection(QObject *parent) : QObject(parent)
 {
     capitalGreekList = (QStringList() << "Γ" << "Δ" << "Λ" << "Ξ" << "Π" << "Σ" << "Φ" << "Ψ" << "Ω");
+
+    lowercaseGreekList = (QStringList() << "α" << "β" << "γ" << "δ" << "ε" << "ζ" << "η" << "θ" << "κ" << "λ" << "μ"
+                                        << "ν" << "ξ" << "π" << "ρ" << "σ" << "τ" << "υ" << "φ" << "χ" << "ψ" << "ω");
+
     mathematicalList = (QStringList() << "+" << "-" << "÷" << "×" << "%" << "(" << ")" << "sin" << "cos" << "tan" << "π" );
 
     notationWidgetCollection = new QVector<QPushButton*>();
