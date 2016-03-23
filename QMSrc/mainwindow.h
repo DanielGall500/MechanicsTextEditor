@@ -35,16 +35,17 @@ private:
     int row, column;
     uint iter;
 
+    QScrollArea *greekScrollArea, *mathematicalScrollArea;
+    QGridLayout *symbolLayout;
+
     ScientificNotationSelection *symbolSelection;
-    QScrollArea *symbolScrollArea;
     QPushButton *symbolButton;
     QStringList *symbolList;
-    QGridLayout *symbolLayout;
     QLabel *symbolLabel;
 
     QVector<QPushButton*>  capitalGreekButtons, mathematicalButtons, lowerGreekButtons;
 
-    void addButtons(QVector<QPushButton *> buttonList, QString labelText);
+    void addButtons(QVector<QPushButton *> buttonList, QScrollArea *symbolScrollArea, QString labelText);
 
 public slots:
     void onNotationClicked();

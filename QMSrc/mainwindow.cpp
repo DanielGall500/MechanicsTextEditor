@@ -8,33 +8,43 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     QMainWindow::showMaximized();
 
+    symbolSelection = new ScientificNotationSelection(this);
+    greekScrollArea = new QScrollArea;
+    mathematicalScrollArea = new QScrollArea;
+
     QFont customFont("Arial", 35, QFont::Bold);
     ui->mainTextEdit->setFont(customFont);
-    symbolScrollArea = new QScrollArea;
 
     ui->tabWidget->removeTab(0);
     ui->tabWidget->removeTab(0);
-    ui->tabWidget->addTab(symbolScrollArea, "Symbols");
+    ui->tabWidget->addTab(mathematicalScrollArea, "Fundamentals");
+    ui->tabWidget->addTab(greekScrollArea, "Greek");
 
+    // Mathematical symbols
     symbolLayout = new QGridLayout;
-    symbolScrollArea->setLayout(symbolLayout);
-
-    symbolSelection = new ScientificNotationSelection(this);
+    mathematicalScrollArea->setLayout(symbolLayout);
 
     QStringList mathematicalList = symbolSelection->getBasicMathematicalList();
-    QStringList capitalGreekList = symbolSelection->getCapitalGreekList();
-    QStringList lowerGreekList = symbolSelection->getLowerGreekList();
 
-    lowerGreekButtons = symbolSelection->generateWidgets(lowerGreekList, symbolScrollArea);
-    capitalGreekButtons = symbolSelection->generateWidgets(capitalGreekList, symbolScrollArea);
-    mathematicalButtons = symbolSelection->generateWidgets(mathematicalList, symbolScrollArea);
+    mathematicalButtons = symbolSelection->generateWidgets(mathematicalList, mathematicalScrollArea);
+
+    row = 0; column = -1;
+    addButtons(mathematicalButtons, mathematicalScrollArea, "Mathematics");
+
+
+    // Greek symbols
+    symbolLayout = new QGridLayout;
+    greekScrollArea->setLayout(symbolLayout);
+
+    QStringList capitalGreekList = symbolSelection->getCapitalGreekList(),
+                lowerGreekList = symbolSelection->getLowerGreekList();
+
+    lowerGreekButtons = symbolSelection->generateWidgets(lowerGreekList, greekScrollArea);
+    capitalGreekButtons = symbolSelection->generateWidgets(capitalGreekList, greekScrollArea);
 
     row = 0, column = -1;
-
-    addButtons(lowerGreekButtons, "Lowercase Greek");
-    addButtons(capitalGreekButtons, "Capital Greek");
-    addButtons(mathematicalButtons, "Mathematics");
-
+    addButtons(lowerGreekButtons, greekScrollArea, "Lowercase Greek");
+    addButtons(capitalGreekButtons, greekScrollArea, "Capital Greek");
 
 }
 
@@ -51,7 +61,7 @@ void MainWindow::onNotationClicked()
    ui->mainTextEdit->setFocus();
 }
 
-void MainWindow::addButtons(QVector<QPushButton *> buttonList, QString labelText)
+void MainWindow::addButtons(QVector<QPushButton *> buttonList, QScrollArea *symbolScrollArea, QString labelText)
 {
     iter = 0;
     row++, column = 0;
