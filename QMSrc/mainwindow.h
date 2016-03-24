@@ -43,7 +43,7 @@ private:
     QStringList *symbolList;
     QLabel *symbolLabel;
 
-    QVector<QPushButton*>  capitalGreekButtons, mathematicalButtons, lowerGreekButtons;
+    QVector<QPushButton*>  capitalGreekButtons, lowerGreekButtons, mathematicalButtons, advMathematicalButtons;
 
     void addButtons(QVector<QPushButton *> buttonList, QScrollArea *symbolScrollArea, QString labelText);
 

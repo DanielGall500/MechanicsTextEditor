@@ -27,8 +27,10 @@ public:
     QVector<QPushButton *> generateWidgets(QStringList &symbols, QScrollArea *parent = 0);
 
     QStringList getCapitalGreekList() { return capitalGreekList; }
-    QStringList getBasicMathematicalList() { return mathematicalList; }
     QStringList getLowerGreekList() { return lowercaseGreekList; }
+
+    QStringList getBasicMathematicalList() { return mathematicalList; }
+    QStringList getAdvancedMathematicalList() { return advMathematicalList; }
 
 private:
     SymbolType  symbolType;
@@ -38,6 +40,7 @@ private:
     QStringList capitalGreekList;
     QStringList lowercaseGreekList;
     QStringList mathematicalList;
+    QStringList advMathematicalList;
 
 protected:
 

@@ -7,7 +7,8 @@ ScientificNotationSelection::ScientificNotationSelection(QObject *parent) : QObj
     lowercaseGreekList = (QStringList() << "α" << "β" << "γ" << "δ" << "ε" << "ζ" << "η" << "θ" << "κ" << "λ" << "μ"
                                         << "ν" << "ξ" << "π" << "ρ" << "σ" << "τ" << "υ" << "φ" << "χ" << "ψ" << "ω");
 
-    mathematicalList = (QStringList() << "+" << "-" << "÷" << "×" << "%" << "(" << ")" << "sin" << "cos" << "tan" << "π" );
+    mathematicalList = (QStringList() << "+" << "-" << "÷" << "×" << "%" << "(" << ")" << "=");
+    advMathematicalList = (QStringList() << "X!" << "ln(" << "log(" << "√(" << "x^y(TODO)" << "sin(" << "cos(" << "tan(" << "EXP" << "Inv(TODO)" << "π" << "e");
 
     notationWidgetCollection = new QVector<QPushButton*>();
 }

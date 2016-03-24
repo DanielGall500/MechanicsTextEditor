@@ -24,12 +24,15 @@ MainWindow::MainWindow(QWidget *parent) :
     symbolLayout = new QGridLayout;
     mathematicalScrollArea->setLayout(symbolLayout);
 
-    QStringList mathematicalList = symbolSelection->getBasicMathematicalList();
+    QStringList mathematicalList = symbolSelection->getBasicMathematicalList(),
+                advMathematicalList = symbolSelection->getAdvancedMathematicalList();
 
     mathematicalButtons = symbolSelection->generateWidgets(mathematicalList, mathematicalScrollArea);
+    advMathematicalButtons = symbolSelection->generateWidgets(advMathematicalList, mathematicalScrollArea);
 
     row = 0; column = -1;
-    addButtons(mathematicalButtons, mathematicalScrollArea, "Mathematics");
+    addButtons(mathematicalButtons, mathematicalScrollArea, "Fundamentals");
+    addButtons(advMathematicalButtons, mathematicalScrollArea, "Advanced");
 
 
     // Greek symbols
