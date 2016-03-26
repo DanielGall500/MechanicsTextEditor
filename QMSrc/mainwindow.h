@@ -15,6 +15,7 @@
 #include <iostream>
 #include <QDebug>
 #include <QLabel>
+#include <QComboBox>
 
 #include <scientificnotationselection.h>
 
@@ -33,7 +34,12 @@ public:
 private:
     Ui::MainWindow *ui;
     int row, column;
-    uint iter;
+    int iter;
+
+    QFont *textFontSettings;
+    QString fontName;
+    int fontSize;
+    QComboBox *fontSizeBox;
 
     QScrollArea *greekScrollArea, *mathematicalScrollArea;
     QGridLayout *symbolLayout;
@@ -49,6 +55,7 @@ private:
 
 public slots:
     void onNotationClicked();
+    void onFontSizeChanged(QString text);
 };
 
 #endif // MAINWINDOW_H

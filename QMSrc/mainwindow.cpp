@@ -8,12 +8,26 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     QMainWindow::showMaximized();
 
+    fontSize = 24, fontName = "Arial";
+    textFontSettings = new QFont(fontName, fontSize, QFont::Bold);
+    ui->mainTextEdit->setFont(*textFontSettings);
+
+    //Main Toolbar
+
+    fontSizeBox = new QComboBox(this);
+
+    for (uint i = 0; i <= 50; i+=2)
+        fontSizeBox->addItem(QString::number(i));
+
+    fontSizeBox->setCurrentText(QString::number(fontSize));
+    ui->mainToolBar->addWidget(fontSizeBox);
+
+    connect(fontSizeBox, SIGNAL(activated(QString)), this, SLOT(onFontSizeChanged(QString)));
+
+    //Symbol selection area
     symbolSelection = new ScientificNotationSelection(this);
     greekScrollArea = new QScrollArea;
     mathematicalScrollArea = new QScrollArea;
-
-    QFont customFont("Arial", 35, QFont::Bold);
-    ui->mainTextEdit->setFont(customFont);
 
     ui->tabWidget->removeTab(0);
     ui->tabWidget->removeTab(0);
@@ -59,9 +73,17 @@ MainWindow::~MainWindow()
 void MainWindow::onNotationClicked()
 {
    QString text = ((QPushButton*)sender())->text();
-   qDebug() << "TEXT OUTPUT: " << text;
    ui->mainTextEdit->insertPlainText(text);
    ui->mainTextEdit->setFocus();
+}
+
+void MainWindow::onFontSizeChanged(QString text)
+{
+    fontSize = int(&text);
+    qDebug() << "Changing font to: " << fontSize;
+    textFontSettings->setPixelSize(50);
+    ui->mainTextEdit->setFont(*textFontSettings);
+    ui->mainTextEdit->setFocus();
 }
 
 void MainWindow::addButtons(QVector<QPushButton *> buttonList, QScrollArea *symbolScrollArea, QString labelText)
@@ -88,13 +110,12 @@ void MainWindow::addButtons(QVector<QPushButton *> buttonList, QScrollArea *symb
 
         symbolButton->setMinimumHeight(symbolScrollArea->height() / 5);
 
-        qDebug() << "Adding " << symbolButton << " to: row " << row << ", column " << column;
         symbolLayout->addWidget(symbolButton, row, column);
 
         connect(symbolButton, SIGNAL(clicked()), this, SLOT(onNotationClicked()));
 
         iter++;
-        if(iter == uint(buttonList.length()))
+        if(iter == buttonList.length())
         {
             row++;
             column = -1;
