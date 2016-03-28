@@ -80,7 +80,6 @@ void MainWindow::onNotationClicked()
 void MainWindow::onFontSizeChanged(QString text)
 {
     fontSize = text.toInt();
-    qDebug() << "Changing font to: " << fontSize;
     textFontSettings->setPointSize(fontSize);
     ui->mainTextEdit->setCurrentFont(*textFontSettings);
     ui->mainTextEdit->setFocus();
