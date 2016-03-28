@@ -8,6 +8,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     QMainWindow::showMaximized();
 
+    //Stylesheets
+    qApp->setStyleSheet("QPushButton #symbolButton { background-color: red }");
+
+
+    //font settings
     fontSize = 24, fontName = "Arial";
     textFontSettings = new QFont(fontName, fontSize, QFont::Bold);
     ui->mainTextEdit->setFont(*textFontSettings);
@@ -80,7 +85,6 @@ void MainWindow::onNotationClicked()
 void MainWindow::onFontSizeChanged(QString text)
 {
     fontSize = text.toInt();
-    qDebug() << "Changing font to: " << fontSize;
     textFontSettings->setPointSize(fontSize);
     ui->mainTextEdit->setCurrentFont(*textFontSettings);
     ui->mainTextEdit->setFocus();
@@ -107,6 +111,12 @@ void MainWindow::addButtons(QVector<QPushButton *> buttonList, QScrollArea *symb
         }
         else
             column++;
+
+        symbolButton->setStyleSheet("background-color : rgba(50,50,50,100%);"
+                                    "color: white;"
+                                    "border-style: solid;"
+                                    "border-width: 2px;"
+                                    "border-color: rgba(255,255,255,90%);");
 
         symbolButton->setMinimumHeight(symbolScrollArea->height() / 5);
 
