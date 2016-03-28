@@ -81,8 +81,8 @@ void MainWindow::onFontSizeChanged(QString text)
 {
     fontSize = int(&text);
     qDebug() << "Changing font to: " << fontSize;
-    textFontSettings->setPixelSize(50);
-    ui->mainTextEdit->setFont(*textFontSettings);
+    textFontSettings->setPointSize(fontSize);
+    ui->mainTextEdit->setCurrentFont(*textFontSettings);
     ui->mainTextEdit->setFocus();
 }
 

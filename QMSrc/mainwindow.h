@@ -16,6 +16,7 @@
 #include <QDebug>
 #include <QLabel>
 #include <QComboBox>
+#include <QTextCursor>
 
 #include <scientificnotationselection.h>
 
@@ -35,6 +36,8 @@ private:
     Ui::MainWindow *ui;
     int row, column;
     int iter;
+
+    QTextCursor *textCursor;
 
     QFont *textFontSettings;
     QString fontName;
