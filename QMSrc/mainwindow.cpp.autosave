@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
                         "QTextEdit { background-color: rgba(225,225,225,100%);"
                         "border: 2px;"
                         "border-style: solid;"
-                        " }");
+                        "}");
 
     //font settings
     fontSize = 24, fontName = "Arial";
