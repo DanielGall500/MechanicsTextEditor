@@ -2,6 +2,8 @@
 
 ScientificNotationSelection::ScientificNotationSelection(QObject *parent) : QObject(parent)
 {
+    advancedSymbols = (QStringList() << "Σ");
+
     capitalGreekList = (QStringList() << "Γ" << "Δ" << "Λ" << "Ξ" << "Π" << "Σ" << "Φ" << "Ψ" << "Ω");
 
     lowercaseGreekList = (QStringList() << "α" << "β" << "γ" << "δ" << "ε" << "ζ" << "η" << "θ" << "κ" << "λ" << "μ"
@@ -38,6 +40,17 @@ QVector<QPushButton *> ScientificNotationSelection::generateWidgets(QStringList 
     }
     return *notationWidgetCollection;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

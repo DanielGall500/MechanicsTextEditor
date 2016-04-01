@@ -55,6 +55,8 @@ private:
     QVector<QPushButton*>  capitalGreekButtons, lowerGreekButtons, mathematicalButtons, advMathematicalButtons;
 
     void addButtons(QVector<QPushButton *> buttonList, QScrollArea *symbolScrollArea, QString labelText);
+    bool isAdvSymbolClicked(QString symbol);
+    void implementAdvNotation(QString advSymbol);
 
 public slots:
     void onNotationClicked();

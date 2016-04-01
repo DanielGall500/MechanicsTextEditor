@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
                         "QTextEdit { background-color: rgba(225,225,225,100%);"
                         "border: 2px;"
                         "border-style: solid;"
-                        " }");
+                        "}");
 
     //font settings
     fontSize = 24, fontName = "Arial";
@@ -79,11 +79,36 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+bool MainWindow::isAdvSymbolClicked(QString symbol)
+{
+    QStringList advSymbols = symbolSelection->getAdvancedSymbols();
+    foreach(QString i, advSymbols)
+    {
+        if (i == symbol)
+            return true;
+    }
+    return false;
+}
+
+void MainWindow::implementAdvNotation(QString advSymbol)
+{
+    if (advSymbol == QString("Σ"))
+    {
+        qDebug() << "Advanced Summation Detected";
+    }
+}
+
 void MainWindow::onNotationClicked()
 {
    QString text = ((QPushButton*)sender())->text();
-   ui->mainTextEdit->insertPlainText(text);
-   ui->mainTextEdit->setFocus();
+
+   if (isAdvSymbolClicked(text))
+       implementAdvNotation(text);
+   else
+   {
+       ui->mainTextEdit->insertPlainText(text);
+       ui->mainTextEdit->setFocus();
+   }
 }
 
 void MainWindow::onFontSizeChanged(QString text)

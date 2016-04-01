@@ -12,11 +12,6 @@
 #include <QTextEdit>
 #include <iostream>
 
-enum SymbolType {
-    LowerCaseGreek,
-    CapitalGreek
-};
-
 class ScientificNotationSelection : public QObject
 {
     Q_OBJECT
@@ -32,11 +27,13 @@ public:
     QStringList getBasicMathematicalList() { return mathematicalList; }
     QStringList getAdvancedMathematicalList() { return advMathematicalList; }
 
+    QStringList getAdvancedSymbols() { return advancedSymbols; }
+
 private:
-    SymbolType  symbolType;
     QScrollArea symbolScrollArea;
 
     //lists
+    QStringList advancedSymbols;
     QStringList capitalGreekList;
     QStringList lowercaseGreekList;
     QStringList mathematicalList;
@@ -47,6 +44,7 @@ protected:
     QVector<QPushButton*> *notationWidgetCollection;
 
 public slots:
+
 };
 
 #endif // SCIENTIFICNOTATIONSELECTION_H
