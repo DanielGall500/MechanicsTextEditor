@@ -8,6 +8,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     QMainWindow::showMaximized();
 
+    connect(this, SIGNAL(keyPressed(QKeyEvent*)), this, SLOT(onEnterPressed(QKeyEvent*)));
+
+    textCursor = ui->mainTextEdit->textCursor();
+    //connect(this, SIGNAL(keyPress),this,SLOT(eventKeyPressed));
+
     //Stylesheets
     ui->mainToolBar->setStyleSheet("background-color: rgba(200,200,200,100%);");
     qApp->setStyleSheet("QScrollArea { background-color: rgba(200,200,200,100%) }"
@@ -80,7 +85,7 @@ MainWindow::~MainWindow()
 }
 
 bool MainWindow::isAdvSymbolClicked(QString symbol)
-{
+{    
     QStringList advSymbols = symbolSelection->getAdvancedSymbols();
     foreach(QString i, advSymbols)
     {
@@ -91,7 +96,7 @@ bool MainWindow::isAdvSymbolClicked(QString symbol)
 }
 
 void MainWindow::implementAdvNotation(QString advSymbol)
-{
+{   
     if (advSymbol == QString("Σ"))
     {
         qDebug() << "Advanced Summation Detected";
@@ -111,7 +116,7 @@ void MainWindow::onNotationClicked()
    }
 }
 
-void MainWindow::onFontSizeChanged(QString text)
+void MainWindow::onFontSizeChanged(QString text) //There is still some bugs in this
 {
     fontSize = text.toInt();
     textFontSettings->setPointSize(fontSize);
@@ -159,6 +164,14 @@ void MainWindow::addButtons(QVector<QPushButton *> buttonList, QScrollArea *symb
             row++;
             column = -1;
         }
+    }
+}
+
+void MainWindow::onEnterPressed(QKeyEvent *event)
+{
+    if (event->key() == Qt::Key_Escape)
+    {
+        qDebug() << "Enter key registered";
     }
 }
 

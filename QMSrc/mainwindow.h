@@ -17,6 +17,7 @@
 #include <QLabel>
 #include <QComboBox>
 #include <QTextCursor>
+#include <QKeyEvent>
 
 #include <scientificnotationselection.h>
 
@@ -37,7 +38,7 @@ private:
     int row, column;
     int iter;
 
-    QTextCursor *textCursor;
+    QTextCursor textCursor;
 
     QFont *textFontSettings;
     QString fontName;
@@ -58,9 +59,13 @@ private:
     bool isAdvSymbolClicked(QString symbol);
     void implementAdvNotation(QString advSymbol);
 
+signals:
+    void keyPressed(QKeyEvent *event);
+
 public slots:
     void onNotationClicked();
     void onFontSizeChanged(QString text);
+    void onEnterPressed(QKeyEvent *event);
 };
 
 #endif // MAINWINDOW_H
